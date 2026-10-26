@@ -1,0 +1,12 @@
+[project]
+name = "kite"
+version = "0.1.0"
+description = "A small programming language with two engines: a tree-walking interpreter and a bytecode VM."
+requires-python = ">=3.11"
+
+[project.scripts]
+kite = "kite.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
