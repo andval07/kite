@@ -1,0 +1,20 @@
+// Each call to counter() gets its own n, kept alive by the closure.
+fn counter() {
+  let n = 0;
+  return fn() { n = n + 1; return n; };
+}
+
+let a = counter();
+let b = counter();
+a(); a();
+print("a:", a(), "b:", b());
+
+// Every loop iteration gets a fresh i, so each closure sees its own value.
+let fns = [];
+let k = 0;
+while k < 3 {
+  let i = k;
+  push(fns, fn() { return i * 10; });
+  k = k + 1;
+}
+print(fns[0](), fns[1](), fns[2]());
